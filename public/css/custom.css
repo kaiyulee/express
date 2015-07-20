@@ -1,0 +1,29 @@
+/* common */
+.loading{
+    position: absolute;
+    margin: auto;
+    top: 14px;
+    left: 50%;
+}
+button:active, .btn:active, button:focus, .btn:focus, button:hover, .btn:hover{
+    /*border:none !important;*/
+    outline:none !important;
+}
+
+.list-item-extra-right{
+    display: inline-block;
+    float: right;
+    margin: 0 0 0 10px;
+}
+
+.list-item-extra-left{
+    display: inline-block;
+    float: left;
+    margin: 0 10px 0 0;
+}
+/**
+ * backend/articles
+ */
+.list-group-item > span:first-child{
+    cursor: pointer;
+}
