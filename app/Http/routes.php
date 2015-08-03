@@ -14,7 +14,7 @@
 Route::controllers([
                        'auth' => 'Auth\AuthController',
                        'password' => 'Auth\PasswordController',
-                   ]);
+                    ]);
 // Global Patterns
 Route::pattern('id', '[0-9]+');
 // Frontend
@@ -31,8 +31,8 @@ Route::group(['prefix' => 'backend'], function () {
     Route::get('/article/create', 'Backend\ArticleController@create');
     Route::get('/article/edit/{id}', 'Backend\ArticleController@edit');
     Route::get('/articles', 'Backend\ArticleController@all');
-    Route::get('/category/create', 'Backend\CategoryController@create');
-    Route::get('/category/eidt/{id}', 'Backend\CategoryController@edit');
+    //Route::get('/category/create', 'Backend\CategoryController@create');
+    //Route::get('/category/eidt/{id}', 'Backend\CategoryController@edit');
     Route::get('/categories', 'Backend\CategoryController@all');
     Route::get('/signin', 'Backend\UserController@signin');
     Route::get('/signup', 'Backend\UserController@signup');
