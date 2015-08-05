@@ -86,4 +86,28 @@ class UserController extends Controller
     {
         return view('about');
     }
+
+    /**
+     * User Login action
+     */
+    public function login()
+    {
+        return view('login');
+    }
+
+    /**
+     * User Logout action
+     */
+    public function logout()
+    {
+        
+    }
+
+    /**
+     * User Register action
+     */
+    public function register()
+    {
+        return view('register');
+    }
 }

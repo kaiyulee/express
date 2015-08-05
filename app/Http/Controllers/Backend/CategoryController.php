@@ -23,7 +23,7 @@ class CategoryController extends Controller
     public function all()
     {
         $all = Category::all();
-        //dump($all);
+        // dump($all);
         return view('backend.categories', ['categories' => $all]);
     }
 }

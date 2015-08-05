@@ -105,7 +105,7 @@ Simple javascript toast notifications
 
 <!-- MAIN APPS JS -->
 <script src="{{ asset('/js/apps.js') }}"></script>
-<script src="{{ asset('/js/demo-panel.js') }}"></script>
+{{--<script src="{{ asset('/js/demo-panel.js') }}"></script>--}}
 
 <!-- SEA JS -->
 <script src="{{ asset('/js/seajs/sea.js') }}"></script>

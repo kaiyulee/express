@@ -12,9 +12,9 @@
 */
 
 Route::controllers([
-                       'auth' => 'Auth\AuthController',
+                       'auth'     => 'Auth\AuthController',
                        'password' => 'Auth\PasswordController',
-                    ]);
+                   ]);
 // Global Patterns
 Route::pattern('id', '[0-9]+');
 // Frontend
@@ -23,7 +23,17 @@ Route::get('/about', 'UserController@about');
 Route::get('home', 'HomeController@index');
 Route::get('/articles', 'ArticleController@all');
 Route::get('/article/{id}', 'ArticleController@show');
-Route::get('/messageboard', 'MessageController@messageboard');
+Route::get('/category/{id}', 'CategoryController@show');
+Route::get('/comment', 'CommentController@comment');
+
+// Authentication routes...
+//Route::get('auth/login', 'Auth\AuthController@getLogin');
+//Route::post('auth/login', 'Auth\AuthController@postLogin');
+//Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//
+//// Registration routes...
+//Route::get('auth/register', 'Auth\AuthController@getRegister');
+//Route::post('auth/register', 'Auth\AuthController@postRegister');
 // End Of Frontend
 
 // Backend

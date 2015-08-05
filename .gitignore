@@ -6,3 +6,4 @@ Homestead.yaml
 .env.php
 .env
 .idea
+composer.lock

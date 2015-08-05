@@ -27,13 +27,14 @@
                 <tbody>
                 @foreach($categories as $cat)
                     <tr>
+                        <td>{{ $cat->id }}</td>
                         <td>{{ $cat->name }}</td>
                         <td>{{ $cat->alias }}</td>
                         <td>{{ $cat->parent_id }}</td>
                         <td>{{ $cat->link }}</td>
-                        <td>{{ $cat->status }}</td>
-                        <td>{{ $cat->show }}</td>
-                        <td>{{ $cat->is_menu }}</td>
+                        <td>{{ $cat->status ? 'Enabled' : 'Disabled'}}</td>
+                        <td>{{ $cat->show ? 'Y' : 'N'}}</td>
+                        <td>{{ $cat->is_menu ? 'Y' : 'N' }}</td>
                         <td>{{ $cat->created_at }}</td>
                         <td>{{ $cat->updated_at }}</td>
                         <td>{{ $cat->activated_at }}</td>
