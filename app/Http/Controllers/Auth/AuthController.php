@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use Symfony\Component\HttpFoundation\Request;
+#use Symfony\Component\HttpFoundation\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -78,5 +80,34 @@ class AuthController extends Controller
                                 'created_at' => $timestamp,
                                 'updated_at' => $timestamp
                             ]);
+    }
+
+    public function getRegister()
+    {
+        return view('auth.register');
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $data = $request->all();
+        $data['login_ip'] = ip2long($request->getClientIp());
+
+        Auth::login($this->create($data));
+
+        return redirect($this->redirectPath());
     }
 }
