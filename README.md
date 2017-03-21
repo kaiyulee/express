@@ -1,4 +1,4 @@
-A blog-like website Based on Laravel 5.1.8 (LTS) for now.
+A blog-like website Based on Laravel 5.1.* (LTS) for now.
 
 
 
@@ -10,30 +10,77 @@ A blog-like website Based on Laravel 5.1.8 (LTS) for now.
 
 
 --- 
-[Track Laravel]
-## Laravel PHP Framework
+### Installation / 安装
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+```
+git clone https://github.com/kaiyulee/express.git laraExpress
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+### usage / 使用
+#### Nginx
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+```
+server {
+    listen 8088;
+    server_name laraexpress.app;
+    root /path/to/laraExpress/public;
+    
+    index index.html index.htm index.php;
+    
+    charset utf-8;
 
-## Official Documentation
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+    access_log off;
+    error_log  /usr/local/var/log/nginx/laraexpress-error.log error;
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
 
-## Contributing
+    location = /404.html {
+        # the root path depends on where you installed nginx
+        root /usr/local/opt/nginx/html;
+        internal;
+    }
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+    location = /50x.html {
+        # the root path depends on where you installed nginx
+        root /usr/local/opt/nginx/html;
+        internal;
+    }
 
-## Security Vulnerabilities
+    sendfile off;
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+    client_max_body_size 100m;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_intercept_errors off;
+        fastcgi_buffer_size 16k;
+        fastcgi_buffers 4 16k;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+```
+#### Apache 
+
+*missing*
+
+### Tables / 表
+
+![tables](http://o9m8gqxa3.bkt.clouddn.com/laraexpress-tables.png)
 
 ### License
 
