@@ -81,6 +81,7 @@ server {
 
 ### Tables / 表
 
+Table creat statements in `/database/tables.sql` (创建表语句)。
 ![tables](http://o9m8gqxa3.bkt.clouddn.com/laraexpress-tables.png)
 
 ### License
