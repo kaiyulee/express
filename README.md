@@ -12,12 +12,16 @@ A blog-like website Based on Laravel 5.1.* (LTS) for now.
 --- 
 ### Installation / 安装
 
-```
+> require composer
+
+```bash
 git clone https://github.com/kaiyulee/express.git laraExpress
+cd laraExpress
+composer install --no-scripts
+composer update
 ```
 
-### usage / 使用
-#### Nginx
+### Nginx
 
 ```
 server {
@@ -74,9 +78,6 @@ server {
 }
 
 ```
-#### Apache 
-
-*missing*
 
 ### Tables / 表
 
